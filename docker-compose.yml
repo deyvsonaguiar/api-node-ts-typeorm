@@ -1,0 +1,18 @@
+version: "2.13"
+
+services:
+  database:
+    image: postgres
+    container_name: database-api-node-ts-typeorm
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=api-node-ts-typeorm
+    volumes:
+      - pgdata:/data/postgres
+volumes:
+  pgdata:
+    driver: local
