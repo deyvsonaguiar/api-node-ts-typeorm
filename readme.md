@@ -17,3 +17,87 @@
 ### Assuntos abordados
 * Criação de ambiente Node com Express em ambiente de terminal
 * Banco de dados relacional TypeORM e Postgres em ambiente Dockerizado
+
+### Endpoints
+> GET `/rooms` - listagem de Aulas
+```
+[
+	{
+		"id": 1,
+		"name": "As 4 operações",
+		"description": "Aula sobre as quatro operações aritméticas",
+		"subjects": [
+			{
+				"id": 2,
+				"name": "Matemática"
+			}
+		],
+		"videos": [
+			{
+				"id": 4,
+				"title": "Subtração",
+				"url": "https://www.goodle.com"
+			},
+			{
+				"id": 3,
+				"title": "Adição",
+				"url": "https://www.goodle.com"
+			},
+			{
+				"id": 2,
+				"title": "Multiplicação",
+				"url": "https://www.goodle.com"
+			},
+			{
+				"id": 1,
+				"title": "Divisão",
+				"url": "https://www.goodle.com"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"name": "Estatística",
+		"description": "Aula sobre estatísticas",
+		"subjects": [
+			{
+				"id": 2,
+				"name": "Matemática"
+			}
+		],
+		"videos": [
+			{
+				"id": 5,
+				"title": "Probabilidade",
+				"url": "https://www.goodle.com"
+			}
+		]
+	}
+]
+```
+>POST `/subject` - Criar disciplina
+```
+{
+	"name": "Matemática"
+}
+```
+>POST `/room` - Criar aula
+```
+{
+	"name": "Estatística",
+	"description": "Aula sobre estatísticas"
+}
+```
+>POST `/room/:idRoom/create` - Criar vídeo da aula
+```
+{
+	"title": "Probabilidade",
+	"url": "https://www.goodle.com"
+}
+```
+>POST `/room/:idRoom/subject` - Relacionar a aula com disciplina
+```
+{
+	"subject_id": 2
+}
+```
