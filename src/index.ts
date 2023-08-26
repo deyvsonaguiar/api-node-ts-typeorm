@@ -1,6 +1,8 @@
-import express from 'express';
+import 'express-async-errors'
+import express, { NextFunction, Request, Response } from 'express';
 import { AppDataSource } from './data-source';
 import { routes } from './routes';
+import { errorMiddleware } from './middlewares/error';
 
 AppDataSource.initialize()
   .then(() => {
@@ -14,5 +16,7 @@ AppDataSource.initialize()
       return res.json("Server is running...")
     })
 
-    return app.listen(process.env.PORT)
+    app.use(errorMiddleware)
+
+    return app.listen(3000)
   });
